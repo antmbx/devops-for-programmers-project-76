@@ -1,0 +1,17 @@
+# ansible-galaxy install -r requirements.yml
+# ansible-playbook playbook.yml -i inventory.yml -kK
+
+
+
+- hosts: all
+  become: yes
+ 
+  tasks:
+    - name: install pip
+      ansible.builtin.apt:
+          name: python3-pip=23.0.1+dfsg-1 
+          state: present
+          update_cache: yes
+
+  roles:
+    - geerlingguy.pip          

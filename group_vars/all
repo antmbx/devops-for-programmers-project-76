@@ -1,0 +1,4 @@
+pip_install_packages:
+  # Specify names and versions.
+  - name: docker
+    version: 7.1.0

@@ -1,0 +1,7 @@
+srv01: "192.168.0.241"
+srv02: "192.168.0.242"
+srv01_https_port: "443"
+srv01_http_port: "80"
+
+srv02_https_port: "443"
+srv02_http_port: "80"
