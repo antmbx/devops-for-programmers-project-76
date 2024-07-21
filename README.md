@@ -5,8 +5,8 @@
 This is a simple application REDMINE
 
 **path to Example:** 
-- HTTPS: https://hexlet.azxs.ru:8443/
-- HTTP: http://hexlet.azxs.ru:8080/
+- HTTPS: https://hexlet.azxs.ru/
+- HTTP: http://hexlet.azxs.ru/
 
 
 ## Описание
