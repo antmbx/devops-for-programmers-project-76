@@ -14,5 +14,5 @@ ansible-redmine-restart:
 
 
 ansible-redmine-reinstall:
-	ansible-playbook playbook.yml -i inventory.ini -kK -t install-redmine
+	ansible-playbook playbook.yml -i inventory.ini -kK -t reinstall-redmine
 
