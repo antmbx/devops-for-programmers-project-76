@@ -9,52 +9,61 @@ This is a simple application REDMINE
 - HTTP: http://hexlet.azxs.ru:8080/
 
 
-## Usage
+## Описание
 
 
-### ENV
+### Переменные
 
-in fiile *group_vars/all* replace enviroment for access Redmine to DB
+Переменные для соединения с базой находятся в файле *group_vars/servers* 
 
-Example:
+Замените значения переменных на свои.
+
+
+Пример:
 ```
 DB_POSTGRES: "192.168.0.243"
 REDMINE_DB_PORT: "5432"
 REDMINE_DB_USERNAME: redmine
-REDMINE_DB_PASSWORD: password
 REDMINE_DB_DATABASE: redmine_db
 ```
 
 
-### Prepare servers
+Пароль к БД задается при установке / переустановке и хранится в файле group_vars/servers/vault.yml.
+!По заданию было в webservers, однако, подготавливаю БД самостоятельно, поэтому при создании контейнера задаю имя пользователя и пароль, в связи с этим секрет сделал доступным для servers
+
+
+### ПОДГОТОВКА
+Установка зависимостей
 ```bash
 make ansible-ex
 ```
 
 
-### Install DB postgres & Redmine
+### УСТАНОВКА
 
 ```bash
 make ansible-redmine-install
 ```
 
 
-### REinstall DB postgres & Redmine: Drop DB, all containers and install
+### ПЕРЕУСТАНОВКА
+**ВНИМАНИЕ! При переустановке происходит полное удаление БД, всех контейнеров.**
 
 ```bash
 make ansible-redmine-reinstall
 ```
 
 
-### Restart-redmine
+### РЕСТАРТ REDMINE 
+Рестарт REDMINE может осуществляться для применения конфигурации при изменении переменных окружения
 
 ```bash
 make ansible-redmine-restart
 ```
 
-### PostgreSQL (env: DB_POSTGRES)
+### БД PostgreSQL (env: DB_POSTGRES)
 
-db & config dir path */var/pgdata*
+Каталог БД и конфигурацию монтируются по пути */var/pgdata*
 
 
 
