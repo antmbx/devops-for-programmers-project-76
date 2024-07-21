@@ -2,11 +2,12 @@
 [![Actions Status](https://github.com/antmbx/devops-for-programmers-project-76/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/antmbx/devops-for-programmers-project-76/actions)
 
 
-
-
-
-
 This is a simple application REDMINE
+
+**path to Example:** 
+- HTTPS: https://hexlet.azxs.ru:8443/
+- HTTP: http://hexlet.azxs.ru:8080/
+
 
 ## Usage
 
