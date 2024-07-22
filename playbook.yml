@@ -31,11 +31,11 @@
   become: yes
   tasks:
 
-    - name: Stop a container
+#    - name: Stop a container
 
-      community.docker.docker_container:
-        name: postgres-db
-        state: stopped
+#      community.docker.docker_container:
+#        name: postgres-db
+#        state: stopped
 #      tags: 
 #      - reinstall-db
 #      - reinstall-redmine         
