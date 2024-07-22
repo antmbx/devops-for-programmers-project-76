@@ -9,7 +9,7 @@
   tasks:
     - name: install pip
       ansible.builtin.apt:
-          name: python3-pip=23.0.1+dfsg-1 
+          name: python3-pip #=23.0.1+dfsg-1  # Action от hexlet не понимает эту версию... у меня дебиан Bookworm
           state: present
           update_cache: yes
       tags: 
