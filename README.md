@@ -33,7 +33,7 @@ REDMINE_DB_USERNAME: redmine
 
 
 ### ПОДГОТОВКА
-Установка зависимостей
+Установка зависимостей, пароль от БД, API ключ от Data Dog
 ```bash
 make ansible-prep
 ```
@@ -67,6 +67,11 @@ make ansible-redmine-pwd
 make ansible-redmine-restart
 ```
 
+
+### Рестарт Data Dog при изменении конфигурации
+```bash
+make ansible-restart-dd
+```
 
 ### БД PostgreSQL (env: DB_POSTGRES)
 
