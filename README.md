@@ -50,7 +50,7 @@ make ansible-redmine-install
 **ВНИМАНИЕ! При переустановке происходит полное удаление БД, всех контейнеров. Задается новый пароль от БД**
 
 ```bash
-make ansible-redmine-reinstall
+make ansible-redmine-reset
 ```
 
 

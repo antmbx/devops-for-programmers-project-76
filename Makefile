@@ -28,6 +28,8 @@ ansible-redmine-restart:
 	ansible-playbook playbook.yml -i inventory.ini -kK -t install-redmine
 
 
+ansible-redmine-reset: ansible-redmine-pwd ansible-redmine-reinstall
+
 ansible-redmine-reinstall:
 	ansible-playbook playbook.yml -i inventory.ini -kK -t reinstall-redmine --ask-vault-pass
 
