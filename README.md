@@ -2,7 +2,6 @@
 [![Actions Status](https://github.com/antmbx/devops-for-programmers-project-76/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/antmbx/devops-for-programmers-project-76/actions)
 
 
-
 > Серверы в облаке не заказывал.
 > Развернул дома 4 VM
 > 
@@ -96,5 +95,5 @@ make ansible-restart-dd
 
 
 
-
+![alt text](http://url/to/img.png)
 ---
