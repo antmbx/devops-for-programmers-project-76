@@ -23,6 +23,10 @@
 
 
 
+
+
+
+
 - hosts: dbservers
   become: yes
   tasks:
@@ -140,7 +144,13 @@
 
 - hosts: webservers
   become: yes
+
+
+
+
   tasks:
+
+
 
 #    - name: Stop a container
 
@@ -180,7 +190,6 @@
           - 80:3000
         etc_hosts:
           postgres-db: "{{ DB_POSTGRES }}"
-
         env_file: "/root/.env"
 
       tags:
@@ -203,3 +212,40 @@
         env_file: "/root/.env"
       tags:
       - restart-redmine       
+
+
+    - name: Set HTTP check
+      ansible.builtin.template: 
+        src: "conf.yaml.j2"
+        dest: "/etc/datadog-agent/conf.d/http_check.d/conf.yaml"
+      notify:
+        - restart datadog-agent       
+      tags: 
+      - restart-datadog
+      - prep
+
+
+
+  handlers:
+    - name: restart datadog-agent
+      ansible.builtin.service:
+        name: datadog-agent
+        state: restarted
+      tags: 
+      - restart-datadog 
+      - prep
+
+
+
+  roles:
+    - role: DataDog.datadog
+      tags: 
+      - prep    
+
+
+
+
+
+ 
+
+      

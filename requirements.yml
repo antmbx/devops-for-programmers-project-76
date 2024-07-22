@@ -1,3 +1,6 @@
 roles:
   - name: geerlingguy.pip
     version: "3.0.3"
+
+  - name: DataDog.datadog
+    version: "4.24.0"

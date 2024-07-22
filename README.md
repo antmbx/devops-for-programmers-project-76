@@ -35,7 +35,7 @@ REDMINE_DB_USERNAME: redmine
 ### ПОДГОТОВКА
 Установка зависимостей
 ```bash
-make ansible-ex
+make ansible-prep
 ```
 
 
@@ -60,6 +60,13 @@ make ansible-redmine-reinstall
 ```bash
 make ansible-redmine-restart
 ```
+
+### Установить задать пароль доступа к БД
+```bash
+make ansible-redmine-pwd
+make ansible-redmine-restart
+```
+
 
 ### БД PostgreSQL (env: DB_POSTGRES)
 
