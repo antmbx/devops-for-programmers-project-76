@@ -93,7 +93,7 @@ make ansible-restart-dd
 
 Каталог БД и конфигурацию монтируются по пути */var/pgdata*
 
+## DDOG
 
-
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/antmbx/devops-for-programmers-project-76/blob/main/dd_screen.jpg?raw=true)
 ---
