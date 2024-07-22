@@ -11,8 +11,12 @@
 > 3. Веб-сервер 1
 > 4. Веб-сервер 2
 > 
-> На роутере настроил маппинг портов на Revers Proxy, он создает TLS с клиентом и кидает на haroxy
-> haproxy балансирует в режиме *leastconn*
+> На роутере настроил маппинг портов на LB
+> - haproxy балансирует на HTTP *leastconn*
+> - nginx создает TLS с клиентом балансирует HTTPS в режиме ip_hash
+> 
+> Можно все на одно, но тестировал разные LB, в итоге, NGINX хорош, как ReProxy TLS, haproxy как LB HTTP и HTTPS. 
+
 
 
 This is a simple application REDMINE
