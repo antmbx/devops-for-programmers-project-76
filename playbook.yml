@@ -30,17 +30,6 @@
 - hosts: dbservers
   become: yes
   tasks:
-
-#    - name: Stop a container
-
-#      community.docker.docker_container:
-#        name: postgres-db
-#        state: stopped
-#      tags: 
-#      - reinstall-db
-#      - reinstall-redmine         
-#      - del-db
-
     - name: Remove container
       community.docker.docker_container:
         name: postgres-db
@@ -150,16 +139,6 @@
 
   tasks:
 
-
-
-#    - name: Stop a container
-
-#      community.docker.docker_container:
-#        name: redmine
-#        state: stopped
-#      tags: 
-#      - del-redmine 
-#      - reinstall-redmine       
 
     - name: Remove container
       community.docker.docker_container:
