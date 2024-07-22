@@ -2,6 +2,19 @@
 [![Actions Status](https://github.com/antmbx/devops-for-programmers-project-76/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/antmbx/devops-for-programmers-project-76/actions)
 
 
+
+> Серверы в облаке не заказывал.
+> Развернул дома 4 VM
+> 
+> 1. Load balancer (haproxy) + reverse proxy (nginx)
+> 2. БД PostgreSQL
+> 3. Веб-сервер 1
+> 4. Веб-сервер 2
+> 
+> На роутере настроил маппинг портов на Revers Proxy, он создает TLS с клиентом и кидает на haroxy
+> haproxy балансирует в режиме *leastconn*
+
+
 This is a simple application REDMINE
 
 **path to Example:** 
@@ -61,7 +74,7 @@ make ansible-redmine-reset
 make ansible-redmine-restart
 ```
 
-### Установить задать пароль доступа к БД
+### Задать пароль доступа к БД
 ```bash
 make ansible-redmine-pwd
 make ansible-redmine-restart
