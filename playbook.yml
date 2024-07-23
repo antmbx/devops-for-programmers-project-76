@@ -68,27 +68,20 @@
       - reinstall-redmine 
 
 
+
+
 # обновление файла pg_hba.conf по шаблону jinja
     - name: update pg_hba.conf
     
       ansible.builtin.template: 
         src: "pg_hba.conf.j2"
         dest: "/var/pgdata/pg_hba.conf"
-        owner: user
-        group: root
-        mode: '0644'        
+      
       tags: 
       - install-redmine       
       - reinstall-db
       - install-db
       - reinstall-redmine 
-      - change_file
-
-
-
-
-
-
 
 
 
@@ -96,7 +89,6 @@
 
 
     - name: Restart a container
-
       community.docker.docker_container:
         name: postgres-db
         restart: true  
@@ -109,34 +101,9 @@
 
 
 
-# меняем права на /var/pgdata
 
-    - name: Change dir pgdata permission
-    
-      ansible.builtin.file:
-        path: /var/pgdata
-        owner: root
-        group: user
-        mode: u+rw,g+rw,o-rw
-        recurse: true
-      tags: 
-      - install-redmine       
-      - reinstall-db
-      - install-db  
-      - reinstall-redmine 
 
-    - name: Change dir pgdata permission
-    
-      ansible.builtin.file:
-        path: /var/pgdata
-        owner: user
-        group: user
-        mode: u+rwx,g+rwx,o+x
-      tags: 
-      - install-redmine       
-      - reinstalldb
-      - install-db       
-      - reinstall-redmine 
+
 
 
 
@@ -164,8 +131,8 @@
         src: "redmine.env.j2"
         dest: .env
         owner: user
-        group: root
-        mode: '0644'        
+        group: user
+        mode: '0660'        
       tags: 
       - install-redmine       
       - reinstall-redmine 
@@ -212,8 +179,8 @@
         src: "conf.yaml.j2"
         dest: "/etc/datadog-agent/conf.d/http_check.d/conf.yaml"
         owner: user
-        group: root
-        mode: '0644'
+        group: user
+        mode: '0660'
       
       notify:
         - restart datadog-agent       
