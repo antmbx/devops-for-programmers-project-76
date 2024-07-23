@@ -1,4 +1,4 @@
 #!/bin/bash
 echo "INPUT API KEY DataDog"
 read apikey
-echo "datadog_api_key: ${apikey}" > group_vars/webservers/vault.yml
+echo "DATADOG_API_KEY: ${apikey}" > group_vars/webservers/vault.yml
