@@ -115,6 +115,7 @@
       - reinstall-db
       - install-db
       - reinstall-redmine 
+      - change_file
 
     - name: Restart a container
 
