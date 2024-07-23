@@ -67,7 +67,8 @@
       - install-db 
       - reinstall-redmine 
 
-# 
+
+# меняем права на /var/pgdata
 
     - name: Change dir pgdata permission
     
@@ -103,9 +104,7 @@
 
 
 
-
 # обновление файла pg_hba.conf по шаблону jinja
-
     - name: update pg_hba.conf
     
       ansible.builtin.template: 
