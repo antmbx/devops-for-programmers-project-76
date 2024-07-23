@@ -74,6 +74,9 @@
       ansible.builtin.template: 
         src: "pg_hba.conf.j2"
         dest: "/var/pgdata/pg_hba.conf"
+        owner: user
+        group: root
+        mode: '0644'        
       tags: 
       - install-redmine       
       - reinstall-db
@@ -160,6 +163,9 @@
       ansible.builtin.template: 
         src: "redmine.env.j2"
         dest: .env
+        owner: user
+        group: root
+        mode: '0644'        
       tags: 
       - install-redmine       
       - reinstall-redmine 
@@ -206,7 +212,7 @@
         src: "conf.yaml.j2"
         dest: "/etc/datadog-agent/conf.d/http_check.d/conf.yaml"
         owner: user
-        group: wheel
+        group: root
         mode: '0644'
       
       notify:
