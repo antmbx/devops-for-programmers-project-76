@@ -76,7 +76,9 @@
       ansible.builtin.template: 
         src: "pg_hba.conf.j2"
         dest: "/var/pgdata/pg_hba.conf"
-      
+        owner: user
+        group: user
+#        mode: '0660'        
       tags: 
       - install-redmine       
       - reinstall-db
@@ -89,6 +91,9 @@
 
 
     - name: Restart a container
+
+
+
       community.docker.docker_container:
         name: postgres-db
         restart: true  
