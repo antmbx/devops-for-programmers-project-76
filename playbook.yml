@@ -1,7 +1,6 @@
 # ansible-galaxy install -r requirements.yml
 # ansible-playbook playbook.yml -i inventory.ini -kK --ask-vault-pass
 
-
 - hosts: all
   become: yes
  
@@ -19,8 +18,7 @@
       tags: 
       - prep
 
-
-
+# Подготовка серверов БД
 - hosts: dbservers
   become: yes
   tasks:
@@ -33,7 +31,7 @@
       - reinstall-redmine        
       - del-db
 
-
+# Удаление базы, при ресете
     - name: Delete db
 
       ansible.builtin.file:
@@ -44,7 +42,7 @@
       - reinstall-db
       - reinstall-redmine       
 
-
+# Создание контейнера БД
     - name: Creates container db
       community.docker.docker_container:
         name: postgres-db
@@ -56,19 +54,14 @@
           - 5432:5432
         volumes:
           - /var/pgdata:/var/lib/postgresql/data
-        env: # Настраиваем
- #         NODE_ENV: production
+        env: 
           POSTGRES_PASSWORD: "{{ REDMINE_DB_PASSWORD }}"
           POSTGRES_USER: "{{ REDMINE_DB_USERNAME }}"
-
       tags: 
       - install-redmine      
       - reinstall-db
       - install-db 
       - reinstall-redmine 
-
-
-
 
 # обновление файла pg_hba.conf по шаблону jinja
     - name: update pg_hba.conf
@@ -85,14 +78,8 @@
       - reinstall-redmine 
 
 
-
-
-
-
+# Рестарт контейнера после замены pg_hba.conf
     - name: Restart a container
-
-
-
       community.docker.docker_container:
         name: postgres-db
         restart: true  
@@ -103,25 +90,12 @@
       - install-db        
       - reinstall-redmine 
 
-
-
-
-
-
-
-
-
-
-
+# Подготовка веб-серверов
 - hosts: webservers
   become: yes
-
-
-
-
   tasks:
 
-
+# Удаление контейнера при ресете
     - name: Remove container
       community.docker.docker_container:
         name: redmine
@@ -141,12 +115,10 @@
       - install-redmine       
       - reinstall-redmine 
 
-
+# Создание контейнеров редмайн
     - name: Creates container redmine  
       community.docker.docker_container:
         name: redmine
-        #recreate: true
-        #restart: true        
         image: "redmine:5.1.3"
         restart_policy: always
         state: started
@@ -160,6 +132,7 @@
       - reinstall-redmine       
       - install-redmine 
 
+# Перезапуск контейнеров редмайн, например при изменении конфигурации, пароля от БД
     - name: Restart container redmine  
       community.docker.docker_container:
         name: redmine
@@ -177,7 +150,7 @@
       tags:
       - restart-redmine       
 
-
+# Настраиваем проверку HTTP в DD
     - name: Set HTTP check
       ansible.builtin.template: 
         src: "conf.yaml.j2"
@@ -192,8 +165,7 @@
       - restart-datadog
       - prep
 
-
-
+# Рестартуем агентов на вебсерверах после изменения конфигов
   handlers:
     - name: restart datadog-agent
       ansible.builtin.service:
@@ -203,8 +175,7 @@
       - restart-datadog 
       - prep
 
-
-
+# Установка DD на веб-серверах
   roles:
     - role: DataDog.datadog
       tags: 
