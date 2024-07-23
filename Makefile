@@ -37,5 +37,5 @@ ansible-redmine-reinstall:
 ansible-redmine-pwd:
 	chmod +x scripts/set_new_pwd.sh
 	./scripts/set_new_pwd.sh
-	ansible-vault encrypt group_vars/servers/vault.yml
+	ansible-vault encrypt group_vars/all/vault.yml
 
