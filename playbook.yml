@@ -68,6 +68,44 @@
       - reinstall-redmine 
 
 
+# обновление файла pg_hba.conf по шаблону jinja
+    - name: update pg_hba.conf
+    
+      ansible.builtin.template: 
+        src: "pg_hba.conf.j2"
+        dest: "/var/pgdata/pg_hba.conf"
+      tags: 
+      - install-redmine       
+      - reinstall-db
+      - install-db
+      - reinstall-redmine 
+      - change_file
+
+
+
+
+
+
+
+
+
+
+
+
+    - name: Restart a container
+
+      community.docker.docker_container:
+        name: postgres-db
+        restart: true  
+        state: started
+      tags: 
+      - install-redmine       
+      - reinstall-db
+      - install-db        
+      - reinstall-redmine 
+
+
+
 # меняем права на /var/pgdata
 
     - name: Change dir pgdata permission
@@ -96,43 +134,6 @@
       - reinstalldb
       - install-db       
       - reinstall-redmine 
-
-
-
-
-
-
-
-
-# обновление файла pg_hba.conf по шаблону jinja
-    - name: update pg_hba.conf
-    
-      ansible.builtin.template: 
-        src: "pg_hba.conf.j2"
-        dest: "/var/pgdata/pg_hba.conf"
-      tags: 
-      - install-redmine       
-      - reinstall-db
-      - install-db
-      - reinstall-redmine 
-      - change_file
-
-    - name: Restart a container
-
-      community.docker.docker_container:
-        name: postgres-db
-        restart: true  
-        state: started
-      tags: 
-      - install-redmine       
-      - reinstall-db
-      - install-db        
-      - reinstall-redmine 
-
-
-
-
-
 
 
 
@@ -176,7 +177,7 @@
           - "{{ REDMINE_HTTP_INNER_PORT }}:3000"
         etc_hosts:
           postgres-db: "{{ DB_POSTGRES }}"
-        env_file: "/root/.env"
+        env_file: .env
 
       tags:
       - reinstall-redmine       
@@ -195,7 +196,7 @@
         etc_hosts:
           postgres-db: "{{ DB_POSTGRES }}"
 
-        env_file: "/root/.env"
+        env_file: .env
       tags:
       - restart-redmine       
 
