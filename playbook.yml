@@ -205,6 +205,10 @@
       ansible.builtin.template: 
         src: "conf.yaml.j2"
         dest: "/etc/datadog-agent/conf.d/http_check.d/conf.yaml"
+        owner: user
+        group: wheel
+        mode: '0644'
+      
       notify:
         - restart datadog-agent       
       tags: 
