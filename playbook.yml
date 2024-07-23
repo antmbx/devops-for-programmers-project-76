@@ -76,8 +76,8 @@
       ansible.builtin.template: 
         src: "pg_hba.conf.j2"
         dest: "/var/pgdata/pg_hba.conf"
-        owner: user
-        group: user
+
+        group: docker
 #        mode: '0660'        
       tags: 
       - install-redmine       
