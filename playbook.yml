@@ -76,9 +76,8 @@
       ansible.builtin.template: 
         src: "pg_hba.conf.j2"
         dest: "/var/pgdata/pg_hba.conf"
-
         group: docker
-#        mode: '0660'        
+        mode: '0660'        
       tags: 
       - install-redmine       
       - reinstall-db
