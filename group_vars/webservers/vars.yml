@@ -1,3 +1,5 @@
 HTTP: http://hexlet.azxs.ru
 HTTPS: https://hexlet.azxs.ru
+REDMINE_HTTP_INNER: 
 datadog_site: datadoghq.eu
+REDMINE_HTTP_INNER_PORT: 80

@@ -160,7 +160,7 @@
         restart_policy: always
         state: started
         ports:
-          - 80:3000
+          - "{{ REDMINE_HTTP_INNER_PORT }}:3000"
         etc_hosts:
           postgres-db: "{{ DB_POSTGRES }}"
         env_file: "/root/.env"
@@ -178,7 +178,7 @@
         restart_policy: always
         state: started
         ports:
-          - 80:3000
+          - "{{ REDMINE_HTTP_INNER_PORT }}:3000"
         etc_hosts:
           postgres-db: "{{ DB_POSTGRES }}"
 
